@@ -13,7 +13,7 @@ const Document: NextPage = () => (
       />
     </Head>
 
-    <body>
+    <body className="bg-app bg-gray-900 bg-cover bg-no-repeat antialiased">
       <Main />
       <NextScript />
     </body>
