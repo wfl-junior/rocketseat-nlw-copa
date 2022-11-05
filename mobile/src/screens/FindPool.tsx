@@ -1,0 +1,27 @@
+import { Heading, VStack } from "native-base";
+import { Button } from "~/components/Button";
+import { Header } from "~/components/Header";
+import { Input } from "~/components/Input";
+
+interface FindPoolProps {}
+
+export const FindPool: React.FC<FindPoolProps> = () => (
+  <VStack flex={1}>
+    <Header title="Buscar por código" showBackButton />
+
+    <VStack mt={8} mx={5} alignItems="center">
+      <Heading
+        fontFamily="heading"
+        color="white"
+        fontSize="xl"
+        mb={8}
+        textAlign="center"
+      >
+        Encontre um bolão através de {"\n"} seu código único
+      </Heading>
+
+      <Input placeholder="Qual o código do bolão?" />
+      <Button title="Buscar bolão" mt={2} />
+    </VStack>
+  </VStack>
+);
