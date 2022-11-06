@@ -27,16 +27,16 @@ async function seed() {
   await Promise.all([
     prisma.game.create({
       data: {
-        datetime: "2022-11-02T12:00:00.201Z",
-        firstTeamCountyCode: "BR",
-        secondTeamCountyCode: "DE",
+        datetime: "2022-12-02T12:00:00.201Z",
+        firstTeamCountryCode: "BR",
+        secondTeamCountryCode: "DE",
       },
     }),
     prisma.game.create({
       data: {
-        datetime: "2022-11-02T15:00:00.201Z",
-        firstTeamCountyCode: "BR",
-        secondTeamCountyCode: "AR",
+        datetime: "2022-12-02T15:00:00.201Z",
+        firstTeamCountryCode: "BR",
+        secondTeamCountryCode: "AR",
         guesses: {
           create: {
             firstTeamPoints: 2,

@@ -74,6 +74,8 @@ export async function guessRoutes(fastify: FastifyInstance) {
         });
       }
 
+      console.log(game.datetime.getTime(), new Date().getTime());
+
       if (game.datetime < new Date()) {
         return response.status(400).send({
           message: "You cannot send guesses after the game's date.",

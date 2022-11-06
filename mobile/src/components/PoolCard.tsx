@@ -21,10 +21,7 @@ interface PoolCardProps extends TouchableOpacityProps {
   data: PoolDTO;
 }
 
-export const PoolCard: React.FC<PoolCardProps> = ({
-  data,
-  ...props
-}: PoolCardProps) => (
+export const PoolCard: React.FC<PoolCardProps> = ({ data, ...props }) => (
   <TouchableOpacity {...props}>
     <HStack
       w="full"

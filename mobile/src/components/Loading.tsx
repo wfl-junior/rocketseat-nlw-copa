@@ -4,6 +4,6 @@ interface LoadingProps {}
 
 export const Loading: React.FC<LoadingProps> = () => (
   <Center flex={1} bgColor="gray.900">
-    <Spinner color="yellow.500" />
+    <Spinner color="yellow.500" size={48} />
   </Center>
 );

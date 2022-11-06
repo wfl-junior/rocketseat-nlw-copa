@@ -18,7 +18,7 @@ export const SignIn: React.FC<SignInProps> = () => {
         title="Entrar com Google"
         mt={12}
         onPress={signIn}
-        disabled={isSigningIn}
+        isDisabled={isSigningIn}
         isLoading={isSigningIn}
         leftIcon={
           <Icon as={Fontisto} name="google" color="white" size="md" mr={2} />

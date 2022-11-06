@@ -20,8 +20,8 @@ CREATE TABLE "User" (
 CREATE TABLE "Game" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "datetime" DATETIME NOT NULL,
-    "firstTeamCountyCode" TEXT NOT NULL,
-    "secondTeamCountyCode" TEXT NOT NULL
+    "firstTeamCountryCode" TEXT NOT NULL,
+    "secondTeamCountryCode" TEXT NOT NULL
 );
 
 -- CreateTable

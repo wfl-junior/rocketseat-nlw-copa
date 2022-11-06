@@ -104,9 +104,7 @@ export async function poolRoutes(fastify: FastifyInstance) {
         },
       });
 
-      return response.status(201).send({
-        success: true,
-      });
+      return response.status(201).send({ pool });
     },
   );
 
@@ -129,8 +127,10 @@ export async function poolRoutes(fastify: FastifyInstance) {
         },
         participants: {
           select: {
+            id: true,
             user: {
               select: {
+                name: true,
                 avatarUrl: true,
               },
             },
@@ -172,8 +172,10 @@ export async function poolRoutes(fastify: FastifyInstance) {
           },
           participants: {
             select: {
+              id: true,
               user: {
                 select: {
+                  name: true,
                   avatarUrl: true,
                 },
               },

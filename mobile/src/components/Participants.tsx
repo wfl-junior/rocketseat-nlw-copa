@@ -4,7 +4,7 @@ export interface ParticipantDTO {
   id: string;
   user: {
     name: string;
-    avatarUrl: string;
+    avatarUrl?: string | null;
   };
 }
 
@@ -18,10 +18,10 @@ export const Participants: React.FC<ParticipantsProps> = ({
   count,
 }) => (
   <HStack>
-    {participants?.map(participant => (
+    {participants.map(participant => (
       <Avatar
         key={participant.id}
-        source={{ uri: participant.user.avatarUrl }}
+        source={{ uri: participant.user.avatarUrl || undefined }}
         w={8}
         h={8}
         rounded="full"
@@ -29,7 +29,7 @@ export const Participants: React.FC<ParticipantsProps> = ({
         marginRight={-3}
         borderColor="gray.800"
       >
-        {participant.user?.name?.at(0)?.toUpperCase()}
+        {participant.user.name[0].toUpperCase()}
       </Avatar>
     ))}
 

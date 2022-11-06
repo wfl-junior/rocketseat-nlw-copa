@@ -5,10 +5,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-}
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
@@ -49,10 +45,10 @@ model User {
 }
 
 model Game {
-  id                   String   @id @default(cuid())
-  datetime             DateTime
-  firstTeamCountyCode  String
-  secondTeamCountyCode String
+  id                    String   @id @default(cuid())
+  datetime              DateTime
+  firstTeamCountryCode  String
+  secondTeamCountryCode String
 
   guesses Guess[]
 }

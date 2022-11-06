@@ -3,11 +3,19 @@ import { Box, HStack, Text } from "native-base";
 import { CaretLeft, Export } from "phosphor-react-native";
 import { ButtonIcon } from "./ButtonIcon";
 
-interface HeaderProps {
+type HeaderProps = {
   title: string;
   showBackButton?: boolean;
-  showShareButton?: boolean;
-}
+} & (
+  | {
+      showShareButton?: false;
+      onShare?: never;
+    }
+  | {
+      showShareButton?: true;
+      onShare: () => void;
+    }
+);
 
 const EmptyBoxSpace = () => <Box w={6} h={6} />;
 
@@ -15,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   showBackButton = false,
   showShareButton = false,
+  onShare,
 }) => {
   const { navigate } = useNavigation();
 
@@ -47,7 +56,11 @@ export const Header: React.FC<HeaderProps> = ({
           {title}
         </Text>
 
-        {showShareButton ? <ButtonIcon icon={Export} /> : <EmptyBoxSpace />}
+        {showShareButton ? (
+          <ButtonIcon icon={Export} onPress={onShare} />
+        ) : (
+          <EmptyBoxSpace />
+        )}
       </HStack>
     </HStack>
   );
