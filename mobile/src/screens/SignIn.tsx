@@ -10,7 +10,7 @@ export const SignIn: React.FC<SignInProps> = () => {
   const { signIn, isSigningIn } = useAuthContext();
 
   return (
-    <Center flex={1} p={7}>
+    <Center flex={1} p={7} bgColor="gray.900">
       <Logo width={212} height={40} />
 
       <Button
@@ -18,6 +18,7 @@ export const SignIn: React.FC<SignInProps> = () => {
         title="Entrar com Google"
         mt={12}
         onPress={signIn}
+        disabled={isSigningIn}
         isLoading={isSigningIn}
         leftIcon={
           <Icon as={Fontisto} name="google" color="white" size="md" mr={2} />

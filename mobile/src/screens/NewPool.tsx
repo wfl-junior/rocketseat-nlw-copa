@@ -7,7 +7,7 @@ import { Input } from "~/components/Input";
 interface NewPoolProps {}
 
 export const NewPool: React.FC<NewPoolProps> = () => (
-  <VStack flex={1}>
+  <VStack flex={1} bgColor="gray.900">
     <Header title="Criar novo bolão" />
 
     <VStack mt={8} mx={5} alignItems="center">

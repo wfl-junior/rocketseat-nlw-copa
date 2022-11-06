@@ -2,16 +2,21 @@ import * as AuthSession from "expo-auth-session";
 import { useAuthRequest } from "expo-auth-session/build/providers/Google";
 import * as WebBrowser from "expo-web-browser";
 import { createContext, useCallback, useContext, useState } from "react";
+import { api } from "~/services/api";
 
 WebBrowser.maybeCompleteAuthSession();
 
 interface UserDTO {
+  id: string;
   name: string;
+  email: string;
+  createdAt: string;
   avatarUrl?: string | null;
 }
 
 interface AuthContextData {
   user: UserDTO | null;
+  isAuthenticated: boolean;
   signIn: () => Promise<void>;
   isSigningIn: boolean;
 }
@@ -44,7 +49,20 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
         response?.type === "success" &&
         response.authentication?.accessToken
       ) {
-        console.log("success");
+        const {
+          data: { user, accessToken },
+        } = await api.post<{ user: UserDTO; accessToken: string }>(
+          "/auth/login",
+          undefined,
+          {
+            headers: {
+              authorization: `Bearer ${response.authentication.accessToken}`,
+            },
+          },
+        );
+
+        setUser(user);
+        api.defaults.headers.authorization = `Bearer ${accessToken}`;
       }
     } catch (error) {
       console.log(error);
@@ -57,6 +75,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     <AuthContext.Provider
       value={{
         user,
+        isAuthenticated: !!user,
         signIn,
         isSigningIn,
       }}
